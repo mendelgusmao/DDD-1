@@ -6,24 +6,28 @@ Identificar os subdomínios do projeto, classificá-los (Core, Supporting, Gener
 ---
 
 ## 1. Nome do Projeto
-**[Escreva o nome do sistema ou aplicação que está sendo modelado]**
+**Revolucionando o Acesso a Saúde**
 
 ---
 
 ## 2. Objetivo Principal do Projeto
 **[Explique o propósito do sistema em uma ou duas frases]**  
-*Exemplo:* Facilitar o agendamento de consultas médicas online entre pacientes e médicos.
+*Exemplo:* Diminuir a fricção nos cuidados de saúde e tratamentos.
 
 ---
 
 ## 3. Identificação dos Subdomínios
 Liste os subdomínios do sistema e classifique-os como **Core Domain**, **Supporting Subdomain** ou **Generic Subdomain**.
 
-| **Subdomínio**              | **Descrição**                                                                                      | **Tipo**         |
-|-----------------------------|--------------------------------------------------------------------------------------------------|------------------|
-| Ex.: Gestão de Consultas    | Gerencia o agendamento, consulta por vídeo e emissão de atestados e receitas.                   | Core Domain      |
-| Ex.: Cadastro de Usuários   | Gerencia o login, cadastro e permissões dos médicos e pacientes.                                | Supporting       |
-| Ex.: Pagamentos             | Processa pagamentos e repassa valores para médicos.                                             | Generic          |
+| **Subdomínio**         | **Descrição**                                                                                   | **Tipo**         |
+|------------------------|-------------------------------------------------------------------------------------------------|------------------|
+| Gestão de Consultas    | Gerencia o agendamento, consulta por vídeo e emissão de atestados e receitas.                   | Core Domain      |
+| Gestão de Exames       | Gerencia os exames, tanto os anteriores às consultas como os pós-consulta                       | Core Domain      |
+| Controle de Medicações | Realiza e acompanha compras de medicações                                                       | Core Domain      |
+| Cadastro de Usuários   | Gerencia o login, cadastro e permissões dos médicos e pacientes.                                | Supporting       |
+| Cadastro de Medicações | Gerencia o cadastro de medicações disponíveis.                                                  | Supporting       |
+| Prontuário             | Armazena informações de consultas, exames, medicações e tratamentos do paciente                 | Supporting       |
+| Pagamentos             | Processa pagamentos e repassa valores para médicos.                                             | Generic          |
 
 ---
 
