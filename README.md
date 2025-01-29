@@ -27,17 +27,20 @@ Liste os subdomínios do sistema e classifique-os como **Core Domain**, **Suppor
 | Cadastro de Usuários   | Gerencia o login, cadastro e permissões dos médicos e pacientes.                                | Supporting       |
 | Cadastro de Medicações | Gerencia o cadastro de medicações disponíveis.                                                  | Supporting       |
 | Prontuário             | Armazena informações de consultas, exames, medicações e tratamentos do paciente                 | Supporting       |
-| Pagamentos             | Processa pagamentos e repassa valores para médicos.                                             | Generic          |
+| Pagamentos             | Processa pagamentos e repassa valores para médicos, farmácias, clínicas e laboratórios.         | Generic          |
 
 ---
 
 ## 4. Desenho dos Bounded Contexts
 Liste e descreva os bounded contexts identificados no projeto. Explique a responsabilidade de cada um.
 
-| **Bounded Context**           | **Responsabilidade**                                                                                 | **Subdomínios Relacionados** |
-|-------------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------|
-| Ex.: Contexto de Consultas    | Gerencia as consultas médicas, do agendamento à finalização, incluindo emissão de receitas.         | Gestão de Consultas         |
-| Ex.: Contexto de Pagamentos   | Processa cobranças de consultas e repasses para médicos ou clínicas.                              | Pagamentos                  |
+| **Bounded Context**           | **Responsabilidade**                                                                                | **Subdomínios Relacionados** |
+|-------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------|
+| Contexto de Consultas         | Gerencia as consultas médicas, do agendamento à finalização, incluindo emissão de receitas.      | Gestão de Consultas             |
+| Contexto de Exames            | Gerencia os pedidos de exames e faz acompanhamento com os laboratórios.                          | Gestão de Exames                |
+| Contexto de Pagamentos        | Processa cobranças de consultas, repasses para médicos ou clínicas, exames e medicações.         | Pagamentos                      |
+| Contexto de Medicações        | Cadastra medicamentos, processa pedidos de medicações, acompanha pedidos                         | Controle de Medicações           |
+|                               |                                                                                                  | Cadastro de Medicações           |
 
 ---
 
@@ -46,10 +49,16 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 - **Mensageria/Eventos (desacoplado):** Ex.: O Contexto de Consultas emite um evento "Consulta Finalizada", consumido pelo Contexto de Pagamentos.
 - **APIs (síncrono):** Ex.: O Contexto de Pagamentos consulta informações de preços no Contexto de Consultas.
 
-| **De (Origem)**              | **Para (Destino)**          | **Forma de Comunicação**    | **Exemplo de Evento/Chamada**                  |
+| **De (Origem)**              | **Para (Destino)**          | **Forma de Comunicação**    | **Exemplo de Evento/Chamada**                 |
 |------------------------------|-----------------------------|-----------------------------|-----------------------------------------------|
 | Contexto de Consultas        | Contexto de Pagamentos      | Mensageria (Evento)         | "Consulta Finalizada"                         |
-| Contexto de Cadastro          | Contexto de Consultas      | API                         | Obter informações de um Paciente pelo ID      |
+| Contexto de Consultas        | Contexto de Exames          | Mensageria (Evento)         | "Solicitação de pré-exame"                    |
+| Contexto de Consultas        | Contexto de Medicações      | Mensageria (Evento)         | "Receita emitida"                             |
+| Contexto de Exames           | Contexto de Pagamentos      | Mensageria (Evento)         | "Exame finalizado"                            |
+| Contexto de Cadastro         | Contexto de Consultas       | API                         | Obter informações de um Paciente pelo ID      |
+| Contexto de Cadastro         | Contexto de Exames          | API                         | Obter exames de um Paciente pelo ID           |
+| Contexto de Cadastro         | Contexto de Medicações      | API                         | Obter receitas de um Paciente pelo ID         |
+| Contexto de Cadastro         | Contexto de Pagamentos      | API                         | Obter informação de pagamento de um Paciente pelo ID         |
 
 ---
 
@@ -58,9 +67,17 @@ Liste os termos principais da Linguagem Ubíqua do projeto. Explique brevemente 
 
 | **Termo**                    | **Descrição**                                                                                   |
 |------------------------------|-----------------------------------------------------------------------------------------------|
-| Ex.: Consulta                | Sessão médica entre paciente e médico.                                                       |
-| Ex.: Paciente                | Usuário que agenda e realiza consultas.                                                      |
-| Ex.: Receita                 | Prescrição médica gerada durante a consulta.                                                 |
+| Consulta                     | Sessão médica entre paciente e médico.                                                       |
+| Paciente                     | Usuário que agenda e realiza consultas.                                                      |
+| Receita                      | Prescrição médica gerada durante a consulta.                                                 |
+| Medicamento                  | Medicamento que faz parte de uma prescrição.                                                 |
+| Exame                        | Procedimento de investigação de saúde .                                                      |
+| Cadastro de Usuário                     | Registro de um usuário no sistema.                                                           |
+| Cadastro de Medicamento                     | Registro de um medicamento no sistema.                                                           |
+| Médico                       | Usuário que realiza avaliação com um usuário paciente.                                                 |
+| Clínica                       | Local segmentado ao atendimento do usuário paciente com um conjunto de médicos disponíveis.                                                 |
+| Laboratório                       | Local segmentado onde se realizam exames                                                 |
+| Farmácia                       | Local segmentado onde são distribuídos medicamentos.                                                 |
 
 ---
 
@@ -73,6 +90,7 @@ Para cada tipo de subdomínio, explique a abordagem para implementação:
 | **Subdomínio**              | **Estratégia**                         | **Ferramentas ou Serviços (se aplicável)** |
 |-----------------------------|---------------------------------------|-------------------------------------------|
 | Gestão de Consultas         | Desenvolvimento interno               |                                           |
+| Gestão de Exames            | Desenvolvimento interno               |                                           |
 | Cadastro de Usuários        | Interno com uso de Auth0 para login   | Auth0                                     |
 | Pagamentos                  | Terceirizar usando API Stripe         | Stripe                                    |
 
