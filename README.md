@@ -12,7 +12,7 @@ Identificar os subdomínios do projeto, classificá-los (Core, Supporting, Gener
 
 ## 2. Objetivo Principal do Projeto
 **[Explique o propósito do sistema em uma ou duas frases]**  
-*Exemplo:* Diminuir a fricção nos cuidados de saúde e tratamentos.
+   Diminuir a fricção nos cuidados de saúde e tratamentos.
 
 ---
 
@@ -40,7 +40,7 @@ Liste e descreva os bounded contexts identificados no projeto. Explique a respon
 | Contexto de Exames            | Gerencia os pedidos de exames e faz acompanhamento com os laboratórios.                          | Gestão de Exames                |
 | Contexto de Pagamentos        | Processa cobranças de consultas, repasses para médicos ou clínicas, exames e medicações.         | Pagamentos                      |
 | Contexto de Medicações        | Cadastra medicamentos, processa pedidos de medicações, acompanha pedidos                         | Controle de Medicações           |
-|                               |                                                                                                  | Cadastro de Medicações           |
+
 
 ---
 
@@ -58,8 +58,8 @@ Explique como os bounded contexts vão se comunicar. Use os padrões de comunica
 | Contexto de Cadastro         | Contexto de Consultas       | API                         | Obter informações de um Paciente pelo ID      |
 | Contexto de Cadastro         | Contexto de Exames          | API                         | Obter exames de um Paciente pelo ID           |
 | Contexto de Cadastro         | Contexto de Medicações      | API                         | Obter receitas de um Paciente pelo ID         |
-| Contexto de Cadastro         | Contexto de Pagamentos      | API                         | Obter informação de pagamento de um Paciente pelo ID         |
-
+| Contexto de Cadastro         | Contexto de Pagamentos      | API                         |Obter informação de pagamento de um Paciente pelo ID|
+                                                                                            
 ---
 
 ## 6. Definição da Linguagem Ubíqua
@@ -72,12 +72,12 @@ Liste os termos principais da Linguagem Ubíqua do projeto. Explique brevemente 
 | Receita                      | Prescrição médica gerada durante a consulta.                                                 |
 | Medicamento                  | Medicamento que faz parte de uma prescrição.                                                 |
 | Exame                        | Procedimento de investigação de saúde .                                                      |
-| Cadastro de Usuário                     | Registro de um usuário no sistema.                                                           |
-| Cadastro de Medicamento                     | Registro de um medicamento no sistema.                                                           |
-| Médico                       | Usuário que realiza avaliação com um usuário paciente.                                                 |
-| Clínica                       | Local segmentado ao atendimento do usuário paciente com um conjunto de médicos disponíveis.                                                 |
-| Laboratório                       | Local segmentado onde se realizam exames                                                 |
-| Farmácia                       | Local segmentado onde são distribuídos medicamentos.                                                 |
+| Cadastro de Usuário          | Registro de um usuário no sistema.                                                           |
+| Cadastro de Medicamento      | Registro de um medicamento no sistema.                                                       |
+| Médico                       | Usuário que realiza avaliação com um usuário paciente.                                       |
+| Clínica                      | Local segmentado ao atendimento do usuário paciente com um conjunto de médicos disponíveis.  |                                              
+| Laboratório                  | Local segmentado onde se realizam exames                                                     |
+| Farmácia                     | Local segmentado onde são distribuídos medicamentos.                                         |
 
 ---
 
