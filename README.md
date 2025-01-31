@@ -39,7 +39,9 @@ Liste e descreva os bounded contexts identificados no projeto. Explique a respon
 | Contexto de Consultas         | Gerencia as consultas médicas, do agendamento à finalização, incluindo emissão de receitas.      | Gestão de Consultas             |
 | Contexto de Exames            | Gerencia os pedidos de exames e faz acompanhamento com os laboratórios.                          | Gestão de Exames                |
 | Contexto de Pagamentos        | Processa cobranças de consultas, repasses para médicos ou clínicas, exames e medicações.         | Pagamentos                      |
-| Contexto de Medicações        | Cadastra medicamentos, processa pedidos de medicações, acompanha pedidos                         | Controle de Medicações           |
+| Contexto de Medicações        | Cadastra medicamentos, processa pedidos de medicações, acompanha pedidos                         | Controle de Medicações          |
+| Contexto de Clientes          | Cadastra clientes, gestão de acesso.                                                             | Controle de Medicações          |
+
 
 
 ---
