@@ -26,6 +26,7 @@ Liste os subdomínios do sistema e classifique-os como **Core Domain**, **Suppor
 | Controle de Medicações | Realiza e acompanha compras de medicações                                                       | Core Domain      |
 | Cadastro de Usuários   | Gerencia o login, cadastro e permissões dos médicos e pacientes.                                | Supporting       |
 | Cadastro de Medicações | Gerencia o cadastro de medicações disponíveis.                                                  | Supporting       |
+| Compra de Medicações   | Processa pedido e repassa solicitação para farmácias, clínicas e laboratórios.                  | Supporting       |
 | Prontuário             | Armazena informações de consultas, exames, medicações e tratamentos do paciente                 | Supporting       |
 | Pagamentos             | Processa pagamentos e repassa valores para médicos, farmácias, clínicas e laboratórios.         | Generic          |
 
